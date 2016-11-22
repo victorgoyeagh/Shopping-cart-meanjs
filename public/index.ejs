@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="/assets/styles/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="/assets/styles/css/jquery.mCustomScrollbar.css" />
+        <link rel="stylesheet" href="/assets/styles/css/main.css" />
+        <base href="/">
+	</head> 
+	<body> 
+		
+		<% include views/includes/header.ejs %>
+		<div id="content" class="container">
+
+
+			<main ng-app="app">
+				<div class="view" ng-view  autoscroll="true"></div>
+			</main>	
+
+			<% include views/includes/footer.ejs %>
+			
+		</div>
+
+		<% include views/includes/modal.ejs %>
+		
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-resource.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+   
+        <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="/assets/js/jquery.elevatezoom.min.js"></script>
+        <script src="/assets/js/customJqExtensions.js"></script>
+        <script src="/assets/js/modules/dirPagination.js"></script> 
+        
+        <!-- <script src="/assets/js/modules/angular-file-upload.min.js"></script>  -->
+  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/1.1.6/angular-file-upload.min.js"></script> 
+        <script src="/assets/js/controllers/library/recursive-tree.js"></script>
+        <script src="/assets/js/main.js"></script>
+
+        <!-- contacts app -->
+        <script src="/assets/js/controllers/contacts/main.js"></script>
+
+        <!-- library assets app -->  
+        <script src="/assets/js/controllers/library/main.js"></script>
+
+        <!-- shop assets app -->  
+        <script src="/assets/js/controllers/shop/main.js"></script>
+
+        
+	</body>
+</html>

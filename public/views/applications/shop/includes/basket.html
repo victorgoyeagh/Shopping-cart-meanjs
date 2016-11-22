@@ -1,0 +1,45 @@
+
+<button ng-show="!advanced" ng-click="showMeBasket()" class="form-control btn btn-info">Toggle basket</button>	
+
+<div ng-class="{ 'basket-basic' : !advanced, 'basket-advanced' : advanced }" ng-show="showBasket || advanced">
+	<div class="basket">
+ 
+			<div class="col-md-12">
+				<p ng-show="!(products.length > 0)">No items in basket</p>
+			</div>
+
+            <div class='content mCustomScrollbar'>
+				<ul class="list-inline basket-list">
+					<li class="repeat-animation  " ng-repeat="product in products track by $index">
+		
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<div class="image" style="background:url('{{ product.images[getImagePath(product.userOptions.colour, product.images)][product.userOptions.colour][0] }}')">
+							</div>
+						</div>				
+						
+						<div class="col-xs-6 col-sm-6 col-md-6 info">	
+							<p>{{ product.name.toUpperCase() }}</p>
+							<p><strong>Colour:</strong> {{ product.userOptions.colour }}</p>
+							<p><strong>Size:</strong> {{ product.userOptions.size }}</p>
+							<p>&pound;{{ product.price }}</p>
+						</div>
+						<div class="col-xs-2 col-sm-2 col-md-2">
+							<a href="" ng-click="removeItemByBasketId(product.userOptions.id)"  class="btn btn-danger" title="Remove item">x</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		<div class="col-md-12">
+			<a href="/#/basket" ng-show="!advanced" class="form-control btn btn-success" title="View shopping basket">View shopping bag</a>
+		</div>
+
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<a href="/#/shop" ng-show="advanced"  class="btnContinue form-control btn btn-success">Continue Shopping</a>
+		</div>
+		
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<a href="" ng-show="advanced" ng-disabled="!(products.length > 0)" ng-click="clearBasket()" class="btnClear form-control btn btn-warning">Clear basket</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,626 @@
+/* font declarations */
+@font-face {
+  font-family: 'opensans_light';
+  src: url("../../styles/css/fonts/opensans-light-webfont.eot");
+  src: url("../../styles/css/fonts/opensans-light-webfont.eot?#iefix") format("embedded-opentype"), url("../../styles/css/fonts/opensans-light-webfont.woff2") format("woff2"), url("../../styles/css/fonts/opensans-light-webfont.woff") format("woff"), url("../../styles/css/fonts/opensans-light-webfont.ttf") format("truetype"), url("../../styles/css/fonts/opensans-light-webfont.svg#opensans_light") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+@font-face {
+  font-family: 'opensans_regular';
+  src: url("../../styles/css/fonts/opensans-regular-webfont.eot");
+  src: url("../../styles/css/fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../../styles/css/fonts/opensans-regular-webfont.woff2") format("woff2"), url("../../styles/css/fonts/opensans-regular-webfont.woff") format("woff"), url("../../styles/css/fonts/opensans-regular-webfont.ttf") format("truetype"), url("../../styles/css/fonts/opensans-regular-webfont.svg#opensans_regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+/**
+ * Breakpoints
+ */
+/* line 3, ../sass/includes/_animations.scss */
+.repeat-animation.ng-enter,
+.repeat-animation.ng-leave,
+.repeat-animation.ng-move {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  position: relative;
+}
+
+/* line 11, ../sass/includes/_animations.scss */
+.repeat-animation.ng-enter {
+  opacity: 0;
+}
+
+/* line 14, ../sass/includes/_animations.scss */
+.repeat-animation.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+/* line 17, ../sass/includes/_animations.scss */
+.repeat-animation.ng-leave {
+  opacity: 1;
+}
+
+/* line 20, ../sass/includes/_animations.scss */
+.repeat-animation.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+/* line 23, ../sass/includes/_animations.scss */
+.repeat-animation.ng-move {
+  opacity: 0.5;
+}
+
+/* line 26, ../sass/includes/_animations.scss */
+.repeat-animation.ng-move.ng-move-active {
+  opacity: 1;
+}
+
+/** Custom Mixins **/
+/** Mixins **/
+/* line 9, ../sass/main.scss */
+body {
+  color: #333333;
+  font-size: 12px;
+  font-family: "opensans_light";
+  background-color: #eee;
+}
+/* line 15, ../sass/main.scss */
+body hr {
+  clear: both;
+  border-color: #999;
+}
+/* line 20, ../sass/main.scss */
+body img {
+  width: 100% !important;
+  display: block;
+}
+/* line 24, ../sass/main.scss */
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-family: "opensans_light";
+  font-weight: bolder;
+  line-height: 1.4em;
+  color: #333333;
+  margin: 0px;
+  text-transform: capitalize;
+}
+/* line 32, ../sass/main.scss */
+body h1 span, body h2 span, body h3 span, body h4 span, body h5 span, body h6 span {
+  font-family: "opensans_regular";
+}
+/* line 35, ../sass/main.scss */
+body h1 span.uppercase, body h2 span.uppercase, body h3 span.uppercase, body h4 span.uppercase, body h5 span.uppercase, body h6 span.uppercase {
+  text-transform: uppercase;
+}
+/* line 41, ../sass/main.scss */
+body h1 {
+  font-family: "opensans_regular";
+}
+/* line 45, ../sass/main.scss */
+body h2 {
+  margin: 5px 0px;
+}
+/* line 49, ../sass/main.scss */
+body p, body ol li, body ul li {
+  color: #333333;
+  font-family: "opensans_light";
+}
+/* line 55, ../sass/main.scss */
+body button, body input, body select, body textarea {
+  font-weight: normal;
+}
+/* line 60, ../sass/main.scss */
+body input.text,
+body input[type=text] {
+  width: 100%;
+}
+/* line 65, ../sass/main.scss */
+body input.button,
+body input[type=button] {
+  width: auto;
+}
+/* line 74, ../sass/main.scss */
+body input[type=range],
+body input.range {
+  margin: auto;
+  width: 90%;
+}
+/* line 78, ../sass/main.scss */
+body input[type=range].slider,
+body input.range.slider {
+  height: 0px;
+  padding: 0px 0px;
+  display: block;
+  margin: 10px auto;
+  cursor: pointer;
+}
+/* line 91, ../sass/main.scss */
+body .table-responsive {
+  border: 0px;
+}
+/* line 95, ../sass/main.scss */
+body .nopadd-nomarg {
+  padding: 0px;
+  margin: 0px;
+}
+/* line 99, ../sass/main.scss */
+body .hide-overflow {
+  overflow: hidden;
+  position: relative;
+}
+/* line 104, ../sass/main.scss */
+body table {
+  margin: auto;
+  width: 100%;
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+}
+/* line 112, ../sass/main.scss */
+body table input[type="radio"],
+body table input[type="checkbox"] {
+  line-height: normal;
+  margin: 0;
+}
+/* line 118, ../sass/main.scss */
+body table tbody > tr > td, body table tbody > tr > th, body table tfoot > tr > td,
+body table tfoot > tr > th, body table thead > tr > td, body table thead > tr > th {
+  vertical-align: middle !important;
+  max-width: 25%;
+  word-break: break-all;
+}
+/* line 123, ../sass/main.scss */
+body table tbody > tr > td:last-child, body table tbody > tr > th:last-child, body table tfoot > tr > td:last-child,
+body table tfoot > tr > th:last-child, body table thead > tr > td:last-child, body table thead > tr > th:last-child {
+  text-align: right;
+}
+/* line 130, ../sass/main.scss */
+body table thead tr:first-child {
+  background: #333333;
+  color: white;
+}
+/* line 134, ../sass/main.scss */
+body table thead tr:first-child th {
+  cursor: pointer;
+  padding: 10px 22px;
+  border-top: 1px solid #333333 !important;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
+}
+/* line 147, ../sass/main.scss */
+body table tbody tr td:not(:last-child), body table tbody tr th {
+  padding-left: 20px !important;
+}
+/* line 150, ../sass/main.scss */
+body table tbody tr td:last-child {
+  text-align: right;
+}
+/* line 157, ../sass/main.scss */
+body table td {
+  position: relative;
+}
+/* line 161, ../sass/main.scss */
+body table tr.completed td:not(:last-child):not(:first-child):before {
+  content: " ";
+  position: absolute;
+  top: 45%;
+  left: 0;
+  border-bottom: 10px solid #333;
+  width: 100%;
+}
+/* line 173, ../sass/main.scss */
+body table tfoot tr td, body table tfoot tr th {
+  padding-left: 20px !important;
+}
+/* line 179, ../sass/main.scss */
+body table .pagination {
+  margin: 6px auto 0px auto;
+}
+/* line 187, ../sass/main.scss */
+body .library {
+  background: white;
+  min-height: 800px;
+}
+/* line 191, ../sass/main.scss */
+body .library h1, body .library h2, body .library h3 {
+  font-weight: bold;
+}
+/* line 196, ../sass/main.scss */
+body .library a.active {
+  font-weight: bold;
+}
+/* line 201, ../sass/main.scss */
+body .library ul {
+  width: 100%;
+  float: left;
+}
+/* line 206, ../sass/main.scss */
+body .library table {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+/* line 210, ../sass/main.scss */
+body .library table thead, body .library table tfoot {
+  display: none;
+}
+/* line 214, ../sass/main.scss */
+body .library table th, body .library table td {
+  vertical-align: initial;
+}
+/* line 221, ../sass/main.scss */
+body .library .tree ul, body .library .tree ol {
+  display: block;
+  position: relative;
+}
+/* line 225, ../sass/main.scss */
+body .library .tree ul li, body .library .tree ol li {
+  display: list-item;
+  position: relative;
+  width: 100%;
+  clear: both;
+}
+/* line 231, ../sass/main.scss */
+body .library .tree ul li.folder, body .library .tree ol li.folder {
+  list-style-type: disc;
+}
+/* line 235, ../sass/main.scss */
+body .library .tree ul li.file, body .library .tree ol li.file {
+  list-style-type: circle;
+}
+/* line 248, ../sass/main.scss */
+body .basket-basic {
+  position: absolute;
+  padding: 10px;
+  background: white;
+  z-index: 99999;
+  border: 2px solid grey;
+  border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+/* line 257, ../sass/main.scss */
+body .basket-basic .basket {
+  overflow: hidden;
+  float: left;
+}
+/* line 261, ../sass/main.scss */
+body .basket-basic .basket .content {
+  overflow: hidden;
+  float: left;
+  margin-bottom: 10px;
+}
+/* line 266, ../sass/main.scss */
+body .basket-basic .basket .content li {
+  width: 100%;
+}
+/* line 269, ../sass/main.scss */
+body .basket-basic .basket .content li .image {
+  background-position: center center !important;
+  background-size: auto 100% !important;
+  background-repeat: no-repeat !important;
+  max-width: 100%;
+  min-height: 98px;
+}
+/* line 288, ../sass/main.scss */
+body .basket-advanced .basket .content .mCustomScrollBox {
+  max-height: none;
+}
+/* line 291, ../sass/main.scss */
+body .basket-advanced .basket .content .mCustomScrollBox li {
+  display: block !important;
+  overflow: hidden;
+  margin: 20px 0px;
+}
+/* line 296, ../sass/main.scss */
+body .basket-advanced .basket .content .mCustomScrollBox li .info {
+  font-size: larger;
+}
+/* line 300, ../sass/main.scss */
+body .basket-advanced .basket .content .mCustomScrollBox li .image {
+  position: relative;
+  background-position: center center !important;
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  max-width: 100%;
+  min-height: 140px;
+}
+/* line 308, ../sass/main.scss */
+body .basket-advanced .basket .content .mCustomScrollBox li .image img {
+  position: absolute;
+  top: -100%;
+}
+/* line 321, ../sass/main.scss */
+body .navbar-inverse {
+  background: #090f14;
+  border-radius: 0px;
+}
+/* line 325, ../sass/main.scss */
+body .navbar-inverse a.navbar-brand {
+  max-width: 160px;
+}
+/* line 328, ../sass/main.scss */
+body .navbar-inverse a.navbar-brand img {
+  width: 100% !important;
+  display: block;
+}
+/* line 334, ../sass/main.scss */
+body .content-alt-1 {
+  padding: 5px;
+  background-color: #F9F9F9;
+  border-radius: 5px;
+  border: 0px;
+  width: 100%;
+  position: relative;
+  float: left;
+}
+/* line 343, ../sass/main.scss */
+body .content-alt-1.paddinise {
+  padding: 20px 1%;
+}
+/* line 347, ../sass/main.scss */
+body .content-alt-1.marginise {
+  margin: 20px 0px;
+}
+/* line 351, ../sass/main.scss */
+body .content-alt-1 ol {
+  margin: 10px 0px;
+  display: block;
+}
+/* line 356, ../sass/main.scss */
+body .content-alt-1 .page-title {
+  margin: 20px 0px 0px;
+}
+/* line 360, ../sass/main.scss */
+body .content-alt-1 .d-inline {
+  display: inline;
+}
+/* line 364, ../sass/main.scss */
+body .content-alt-1 .t-right {
+  text-align: right;
+}
+/* line 368, ../sass/main.scss */
+body .content-alt-1 .t-left {
+  text-align: left;
+}
+/* line 372, ../sass/main.scss */
+body .content-alt-1 .perc70 {
+  width: 70%;
+}
+/* line 376, ../sass/main.scss */
+body .content-alt-1 .perc30 {
+  width: 30%;
+}
+/* line 380, ../sass/main.scss */
+body .content-alt-1 .center {
+  display: block;
+  margin: auto;
+}
+/* line 385, ../sass/main.scss */
+body .content-alt-1 .a-center {
+  text-align: center;
+}
+/* line 389, ../sass/main.scss */
+body .content-alt-1 form {
+  background-color: white;
+  border-radius: 5px;
+}
+/* line 393, ../sass/main.scss */
+body .content-alt-1 form table {
+  margin-bottom: 0px !important;
+  border-radius: 5px;
+  overflow: hidden;
+}
+/* line 402, ../sass/main.scss */
+body .app-list {
+  font-size: 18px;
+}
+/* line 410, ../sass/main.scss */
+body .category-list .title,
+body .product-list .title,
+body .product .title {
+  margin: 0px 0px 20px 0px;
+}
+/* line 413, ../sass/main.scss */
+body .category-list .title h3,
+body .product-list .title h3,
+body .product .title h3 {
+  text-transform: capitalize;
+}
+/* line 421, ../sass/main.scss */
+body .category-list li {
+  text-transform: capitalize;
+}
+/* line 432, ../sass/main.scss */
+body .product-list li .product {
+  margin: 0px 0px 20px;
+}
+/* line 435, ../sass/main.scss */
+body .product-list li .product .image {
+  display: block;
+  position: relative;
+}
+/* line 440, ../sass/main.scss */
+body .product-list li .product .image .info {
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 10px 10%;
+  word-wrap: break-word;
+  color: grey;
+}
+/* line 455, ../sass/main.scss */
+body .product-list li .product .details .name strong {
+  padding: 5px 0px;
+  font-weight: bold;
+  font-family: "opensans_regular";
+  display: block;
+}
+/* line 470, ../sass/main.scss */
+body .product .details {
+  margin: 0px 0px 20px;
+}
+/* line 475, ../sass/main.scss */
+body .product .details .images .main-image {
+  max-width: 320px;
+}
+/* line 482, ../sass/main.scss */
+body .product .details .description p {
+  font-size: larger;
+}
+/* line 489, ../sass/main.scss */
+body .product .details .price label {
+  font-size: 14px;
+  font-family: opensans_regular;
+}
+/* line 494, ../sass/main.scss */
+body .product .details .price span {
+  display: block;
+  clear: both;
+  font-size: 40px;
+}
+/* line 509, ../sass/main.scss */
+body .filters .price-cont,
+body .filters .subcategory-cont,
+body .filters .colours-cont,
+body .filters .sizes-cont {
+  margin: 20px 0px;
+}
+/* line 512, ../sass/main.scss */
+body .filters .price-cont label,
+body .filters .subcategory-cont label,
+body .filters .colours-cont label,
+body .filters .sizes-cont label {
+  font-size: 14px;
+  font-family: opensans_regular;
+  margin: 10px 0px;
+}
+/* line 521, ../sass/main.scss */
+body .filters .colours-cont .colours {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  margin: auto;
+}
+/* line 525, ../sass/main.scss */
+body .filters .colours-cont .colours li {
+  margin: 0px 10px 10px 0px;
+  padding: 0px;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+/* line 529, ../sass/main.scss */
+body .filters .colours-cont .colours li:first-child {
+  margin: 0px 6.5px 10px 0px;
+}
+/* line 541, ../sass/main.scss */
+body .filters .colours-cont .colours li span {
+  display: block;
+  text-indent: -999999px;
+  overflow: hidden;
+}
+/* line 547, ../sass/main.scss */
+body .filters .colours-cont .colours li.default {
+  font-weight: bold;
+}
+/* line 550, ../sass/main.scss */
+body .filters .colours-cont .colours li.default span {
+  text-align: center;
+  text-indent: 0px;
+}
+/* line 558, ../sass/main.scss */
+body .filters .colours-cont .colours li.red {
+  background: red;
+}
+/* line 559, ../sass/main.scss */
+body .filters .colours-cont .colours li.grey {
+  background: grey;
+}
+/* line 560, ../sass/main.scss */
+body .filters .colours-cont .colours li.neutral {
+  background: neutral;
+}
+/* line 561, ../sass/main.scss */
+body .filters .colours-cont .colours li.purple {
+  background: purple;
+}
+/* line 562, ../sass/main.scss */
+body .filters .colours-cont .colours li.blue {
+  background: blue;
+}
+/* line 563, ../sass/main.scss */
+body .filters .colours-cont .colours li.brown {
+  background: brown;
+}
+/* line 564, ../sass/main.scss */
+body .filters .colours-cont .colours li.pink {
+  background: pink;
+}
+/* line 565, ../sass/main.scss */
+body .filters .colours-cont .colours li.white {
+  background: white;
+}
+/* line 566, ../sass/main.scss */
+body .filters .colours-cont .colours li.green {
+  background: green;
+}
+/* line 567, ../sass/main.scss */
+body .filters .colours-cont .colours li.orange {
+  background: orange;
+}
+/* line 568, ../sass/main.scss */
+body .filters .colours-cont .colours li.black {
+  background: black;
+}
+/* line 572, ../sass/main.scss */
+body .filters .colours-cont .colours li:hover {
+  border-color: grey;
+}
+/* line 577, ../sass/main.scss */
+body .filters .colours-cont .colours li.selected, body .filters .colours-cont .colours li.active {
+  border-color: black;
+}
+/* line 589, ../sass/main.scss */
+body .filters .sizes-cont ul {
+  display: inline-block;
+  width: 100%;
+}
+/* line 593, ../sass/main.scss */
+body .filters .sizes-cont ul .size {
+  display: block;
+  float: left;
+  margin: 0px 5px;
+  position: relative;
+  width: 30.5px;
+  height: 30.5px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+/* line 604, ../sass/main.scss */
+body .filters .sizes-cont ul .size:hover {
+  border: 1px solid grey;
+  background: grey;
+  color: white;
+}
+/* line 611, ../sass/main.scss */
+body .filters .sizes-cont ul .size.selected, body .filters .sizes-cont ul .size.active {
+  border: 1px solid black;
+  background: black;
+  color: white;
+}
+/* line 617, ../sass/main.scss */
+body .filters .sizes-cont ul .size span {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: smaller;
+}

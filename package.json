@@ -1,0 +1,28 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "express",
+  "main": "index.js",
+  "scripts": { 
+  },
+  "devDependencies": {
+    "gulp": "3.8.7",
+    "browserify": "9.0.3",
+    "browserify-shim": "3.8.3", 
+    "jquery": "*",
+    "bootstrap": "*"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "vg",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.5",
+    "ejs": "^2.3.4",
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*",
+    "forever": "*"
+  }
+}

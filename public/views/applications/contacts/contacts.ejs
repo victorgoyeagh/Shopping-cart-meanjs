@@ -1,0 +1,125 @@
+
+<div>
+
+	<div class="row page-title">
+		<div class="col-md-12">
+		<h2>Contact List.</h2>
+		<p>A basic CRUD contact list.</p> 
+		</div>
+	</div>
+
+	<div class="row"> 
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<div class="content-alt-1">		 
+					<form name="contactform" autocomplete="true" ng-init="init()">
+
+						<table id="contact-list" class="table table-striped">
+							<thead>
+								<tr>
+									<th ng-click="sort('name')">Name
+										<span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}">
+									</th>
+									<th ng-click="sort('email')">E-mail
+										<span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}">
+									</th>
+									<th ng-click="sort('number')">Number
+										<span class="glyphicon sort-icon" ng-show="sortKey=='number'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}">
+									</th>
+									<th>&nbsp;</th>
+								</tr>
+								<tr>
+									<th>
+										<input type="text" class="form-control" name="name" value="" ng-model="Contact.Name" required />
+									</th>
+									<th>
+										<input type="email" class="form-control" name="email" value="" ng-model="Contact.Email" required />
+									</th>
+									<th>
+										<input type="text" class="form-control" name="number"  ng-model="Contact.Number" required />
+									</th>
+									<th>
+										<input ng-show="(add)" type="button" class="form-control btn btn-default" ng-click="AddContact(this);" ng-blur="" title="ADD CONTACT" value="&#10010;" />
+
+										<div ng-show="(!add)">
+											<input type="button" class="form-control btn btn-success" ng-click="updateContact(this);" ng-blur="" title="UPDATE CONTACT" value="&#x2713;" title="Update" /> 
+
+											<input type="button" class="form-control btn btn-warning" ng-click="cancelEditContact(this);" ng-blur="" title="CANCEL EDIT CONTACT" value="&#x2612;" title="Cancel Update" />
+
+											<input type="hidden" name="hdnUpdateContactId" ng-model="hdnUpdateContactId" value="" ng-model="Contact.HiddenId" />	
+										</div>
+
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr dir-paginate="contact in filteredContacts = (contacts | filter:search) | orderBy:sortKey:reverse | itemsPerPage: noofesults">
+									<td ng-bind="contact.name"></td>
+									<td ng-bind="contact.email"></td>
+									<td ng-bind="contact.number"></td>
+									<td>
+										<input type="hidden" ng-bind="contact._id" ng-value="contact._id" value="contact._id" />	
+
+										<input type="button" ng-disabled="(!add)" class="form-control btn btn-info thin" ng-click="setEditContact(this);" ng-blur="" title="EDIT" value="&#x2611">
+
+										<input type="button" ng-disabled="(!add)" class="form-control btn btn-danger thin" ng-click="DeleteContact(this);" ng-blur="" title="DELETE" value="&#9746">
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+							<tr>
+								<td colspan="2" class="t-left">
+									 Total no. of contacts: {{ filteredContacts.length }}.
+								</td>
+								<td colspan="2">
+									<dir-pagination-controls
+								        max-size="5"
+								        direction-links="true"
+								        boundary-links="true" >
+								    </dir-pagination-controls>
+								</td>
+							</tr>
+								<tr>
+									<td colspan="4">{{ Status }}</td>
+								</tr>
+							</tfoot>
+						</table>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12"> 
+			<div class="content-alt-1">
+				<div class="col-md-4">
+					
+      				<label for="noofesults" class="d-inline">Results per page:</label>
+      				<select name="noofesults" class="form-control d-inline perc30" ng-model="noofesults" >
+      					<option value=""></option>
+      					<option value="5" selected="selected">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+      				</select>
+
+				</div>
+
+				<div class="col-md-4">
+					&nbsp;
+				</div>
+				<div class="col-md-4 t-right nopadd-nomarg">
+      
+      				<label for="search" class="d-inline">Search:</label>
+      				<input ng-model="search" id="search" class="form-control d-inline perc70" placeholder="Filter contacts">
+					
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

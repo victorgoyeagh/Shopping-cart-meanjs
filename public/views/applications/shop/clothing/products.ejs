@@ -1,0 +1,215 @@
+
+<div ng-controller="products" ng-init="init()">
+	<div class="row page-title">  
+
+		<div class="col-md-12">
+		<h2>Online Clothing Store.</h2>
+			<p>Demonstrates a product list using advanced filtering and sort options.</p> 
+		</div>
+	</div>
+ 
+
+	<div class="row product-list">
+
+		<div class="col-md-12">
+
+			<div class="content-alt-1 marginise paddinise" ng-show="!foundCategory">
+
+				<div class="col-md-9"> 
+				&nbsp;
+
+				</div>
+				<div class="col-md-3"> 
+					<div ng-Basket="basic"></div>
+				</div>
+				
+				<div class="col-md-12"> 
+					<div class="title"> 
+						<h2>No category found.</h2>
+						<p>Please select a category</p>
+						<ul class="list-inline category-list">
+							<li ng-repeat="category in categories" class="col-xs-12 col-sm-12 col-md-12">
+								
+								<a href="{{ '/#/shop/products?category=' + category }}" title="{{ category }}"> 
+									{{ category.toUpperCase() }}
+								</a>
+ 
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="content-alt-1 marginise paddinise" ng-show="foundCategory">
+ 				
+				<div class="col-md-9"> 
+				&nbsp;
+
+				</div>
+				<div class="col-md-3"> 
+					<div ng-Basket="basic"></div>
+				</div>
+				
+				<div class="col-md-12"> 
+					<div class="title"> 
+						<h2>{{ category }}</h2>
+					</div>
+					<div class="col-md-12 nopadd-nomarg"> 
+						<div class="col-md-8 nopadd-nomarg">
+							
+							<div ng-include src="'/views/applications/shop/includes/breadcrumbs.html'"></div>
+						</div>
+						<div class="col-md-4">
+							<label class="d-inline">Sort by:
+								<select ng-change="sort(sortKey)" ng-init="sort(sortKey)" ng-model="sortKey" class="form-control d-inline perc70" name="sort" id="sort">
+									<option value="null,false">---</option>
+									<option value="name,false">Name DESC</option>
+									<option value="name,true">Name ASC</option>
+									<option value="price,true">High / low</option>
+									<option value="price,false">Low / high</option>
+								</select>
+							</label>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="col-md-3 filters"> 
+					
+					<h4>Filters</h4>
+					
+					<p>Displaying {{ filteredProducts.length }} products.</p>
+
+					<div class="subcategory-cont"> 
+				        <div class="form-group">
+				            <label >Search</label><br />
+				            <input type="text" ng-model="search.name" class="form-control" placeholder="Search" list="suggestions">
+				            <datalist id="suggestions">
+							   <option ng-repeat="name in productnames" value="{{ name }}">
+							</datalist>
+				        </div> 
+				    </div>
+
+					<hr />
+
+					<div class="subcategory-cont">
+						<label for="subcategories">Sub categories</label>
+						<select ng-model="subcat" class="form-control d-inline perc70" name="subcategories" id="subcategories">
+							<option value="">All sub categories</option>
+							<option ng-repeat="cat in subcategories" ng-value="{{ cat }}" value="{{ cat }}">{{ cat.replace(_, ' ').toUpperCase()}}</option>
+						</select>
+					</div>
+					
+					<hr />
+
+					
+					<div class="price-cont">
+
+						<div class="col-md-6">	
+							<label for="minselprice">Min price</label>
+							<input id="minselprice" class="form-control bfh-number price" ng-model="minSelPrice" type="number" min="{{ minPrice }}" max="{{ maxSelPrice - 10 }}" step="10" value="price" /> 
+						</div>
+
+						<div class="col-md-6">	
+							<label for="maxselprice">Max price</label>
+							<input id="maxselprice" class="form-control bfh-number price" ng-model="maxSelPrice" type="number" min="{{ minSelPrice + 10 }}" max="{{ maxPrice }}" step="10" value="price" /> 
+						</div>
+ 
+						<div class="col-md-12">	
+							<p>&nbsp;</p>
+						</div>
+
+					</div>
+
+					<hr />
+
+					<div class="colours-cont">
+						<label for="colours">Colours</label>
+						<ul ng-select="multiple" class="list-inline colours">
+							<li title="default" ng-click="toggleColour('default')" class="colour default"> 
+								<div><span>x</span></div>
+							</li>
+							<li ng-repeat="colour in colours" title="{{ colour }}" ng-click="toggleColour(colour)" class="colour {{ colour }}">
+								<div><span>{{ colour }}</span></div>
+							</li>
+						</ul> 
+					</div>
+					
+					<hr />
+
+					<div class="sizes-cont">
+						<label for="sizes">Sizes</label>
+						<ul ng-select="multiple" class="list-inline sizes">
+							<li title="default" ng-click="toggleSize('default')" class="size default"> 
+								<div><span>x</span></div>
+							</li>
+							<li class="size" ng-repeat="size in sizes" ng-click="toggleSize(size)" title="{{ size }}">
+								<div title="{{ size.toUpperCase() }}"><span>{{ size }}</span></div>
+							</li>
+						</ul> 
+					</div>
+
+					<hr />
+					
+					<button class="form-control btn btn-success" ng-click="toggleProperties()">Toggle sort properties</button>
+				</div>
+
+				<div class="col-md-9">
+
+					<h4>Product List.</h4>
+					
+					<div class="col-md-12" ng-show="(filteredProducts.length == 0)">
+						
+						<p>No products found, try altering or defaulting some filter values.</p>
+					</div>
+
+
+					<ul class="list-inline">
+						<li dir-paginate="product in filteredProducts = (products | filter:hasColours(selColours) | filter:hasSizes(selSizes) | filter:greaterLessThan(minSelPrice, maxSelPrice) | orderBy:sortVal:reverse | filter:search | filter:subcat ) | itemsPerPage:9" class="col-xs-12 col-sm-6 col-md-4">
+							
+							<div class="product">
+								<div class="image">
+									<div class="info" ng-show="showProductProperties">
+										<p>[{{ product.colours.toString() }}]</p>
+										<p>[{{ product.sizes.toString() }}]</p> 
+										<p>(subcategory: {{ product.subcategory }})</p>
+									</div>
+									<a href="{{ '/#/shop/product?productId=' + product._id }}" title="{{ product.name }}">
+										<img ng-src="{{ getDefaultImages(product.images[0])[0] }}" alt="{{ product.name }}" />
+									</a>
+								</div>
+								<div class="details">
+								<div class="name">
+									<a href="{{ '/#/shop/product?productId=' + product._id }}" title="{{ product.name }}">
+										<strong>{{ product.name.substring(0,20).toUpperCase() + ((product.name.length > 20) ? "..." : "") }} - {{ product.price | currency:"&pound;":2 }} </strong>
+									</a>
+									</div>
+									<div class="price">
+										
+									</div>
+
+								</div>
+
+							</div>
+
+						</li>
+					</ul>	
+				 
+
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-3">
+					&nbsp;
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-9 a-center">
+					 <dir-pagination-controls
+				        max-size="5"
+				        direction-links="true"
+				        boundary-links="true" >
+				    </dir-pagination-controls>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+

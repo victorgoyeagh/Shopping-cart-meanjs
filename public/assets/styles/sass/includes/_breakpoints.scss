@@ -1,0 +1,55 @@
+/**
+ * Breakpoints
+ */  
+
+// Small screen / tablet
+$screen-sm-min:              250px;
+$screen-sm:                  $screen-sm-min;
+
+// Medium screen / desktop
+$screen-md-min:              768px;
+$screen-md:                  $screen-md-min;
+
+// Large screen / wide desktop
+$screen-lg:                  970px;
+$screen-lg-min:              $screen-lg;
+
+@mixin bp($min: 0, $max: 0) {
+    $type: type-of($min);
+ 
+    @if $type == string {
+   
+        @if $min == sm {
+            @media (min-width: $screen-sm-min) { @content; }
+            .lt-ie9 & { @content } 
+        }
+   
+        @else if $min == md {
+            @media (min-width: $screen-md-min) { @content; }
+        }
+   
+        @else if $min == lg {
+            @media (min-width: $screen-lg) { @content; }
+        }
+   
+        @else {
+            @warn "Breakpoint mixin supports: xs, sm, md, lg";
+        }
+    }
+ 
+    @else if $type == number {
+        $query: "all" !default;
+        @if $min != 0 and $max != 0 { 
+            $query: "(min-width: #{$min}) and (max-width: #{$max})"; 
+        }
+        @else if $min != 0 and $max == 0 { 
+            $query: "(min-width: #{$min})"; 
+        }
+        @else if $min == 0 and $max != 0 { 
+            $query: "(max-width: #{$max})"; 
+        }
+        @media #{$query} { 
+            @content;
+        }
+    }
+}

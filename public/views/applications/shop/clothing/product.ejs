@@ -1,0 +1,137 @@
+
+<div ng-controller="product" ng-init="init()">
+	<div class="row page-title">
+
+		<div class="col-md-12">
+			<h2>Online Clothing Store.</h2>
+			<p>Replecates the functionaity of an e-commerce store.</p> 
+		</div>
+	</div>
+	
+	
+
+	<div class="row product">
+		<div class="col-md-12">
+			
+			<div class="content-alt-1 marginise paddinise" ng-show="!productFound">
+	  			
+	  			<div class="col-md-12"> 
+					<div class="title">
+						<h2>Sorry, no product found.</h2>		
+					</div>
+					<div class="col-md-12 nopadd-nomarg"> 
+						<div class="col-md-12 nopadd-nomarg"> 
+							<div ng-include src="'/views/applications/shop/includes/breadcrumbs.html'"></div>
+						</div>
+						
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							&nbsp;
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							<a href="/#/shop" class="btnContinue form-control btn btn-success">Continue Shopping</a>
+						</div>
+						
+						<div class="col-xs-4 col-sm-4 col-md-4">
+							&nbsp;
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content-alt-1 marginise paddinise" ng-show="productFound">
+
+				<div class="col-md-9"> 
+				&nbsp;
+
+				</div>
+				<div class="col-md-3"> 
+						<div ng-Basket="basic"></div> 
+
+				</div>
+				
+				<div class="col-md-12"> 
+					<div class="title"> 
+						<h2>{{ productdetails.category }}</h2>
+					</div>
+					<div class="col-md-12 nopadd-nomarg"> 
+						<div class="col-md-8 nopadd-nomarg">
+							
+							<div ng-include src="'/views/applications/shop/includes/breadcrumbs.html'"></div>
+						</div>
+						<div class="col-md-4 t-right nopadd-nomarg">
+							&nbsp; 
+						</div>
+					</div>
+				</div>
+ 
+			
+
+				<div class="col-xs-12 col-sm-12 col-md-6 nopadd-nomarg hide-overflow">
+					<div class="images">
+						
+				 		<div class="main-image col-xs-9 col-ms-9 col-md-9 nopadd-nomarg">
+							<img id="mainzoom" class="mainzoom" ng-src="{{ (productdetails.images[chosenIndex][chosenColour])[0] }}" data-zoom-image="{{ (productdetails.images[chosenIndex][chosenColour])[0] }}" />
+						</div>
+						<div class="sub-images col-xs-3 col-sm-3 col-md-3">
+							<ul class="list-inline gallery" id="gallery">
+								<li ng-repeat="image in productdetails.images[chosenIndex][chosenColour]">
+									<a href="" data-image="{{ image }}" data-zoom-image="{{ image }}">
+										<img ng-src="{{ image }}"  alt="{{ productdetails.name }}" />
+									</a>
+								</li>
+							</ul> 
+						</div>
+
+					</div>
+				 </div>
+
+				<div class="col-xs-12 col-sm-12 col-md-6">
+					
+					<div class="details">
+						<div class="title">
+							<h2>{{ productdetails.name }}</h2>
+						</div>
+						<div class="description">
+							<p ng-bind="productdetails.description"></p>
+						</div>
+						<div class="price">
+							<label for="price">Price</label>
+							<span>&pound;{{ productdetails.price | number : 2 }}</span>
+						</div>
+						<div class="filters">
+							<div class="colours-cont">
+								<label for="colours">Colours</label>
+								<ul ng-select="single" class="list-inline colours">
+									<li ng-click="selectColour(colour)" class="colour {{ colour }}" title="{{ colour }}" ng-repeat="colour in productdetails.colours">
+										<div title="{{ colour.toUpperCase() }}"><span>{{ colour }}</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="sizes-cont">
+								<label for="sizes">Sizes</label>
+								<ul ng-select="single" class="list-inline sizes">
+									<li ng-click="selectSize(size)" ng-repeat="size in productdetails.sizes" class="size" title="{{ size }}"> 
+										<div title="{{ size.toUpperCase() }}"><span>{{ size }}</span></div>
+									</li>
+								</ul>
+							</div>
+						</div> 
+					</div>
+					<div class="addtobag center">
+						
+						<div class="col-xs-6 col-sm-6 col-md-6 nopadd-nomarg">
+							<button ng-click="addItemToBasket(productdetails)" class="form-control btn btn-success">Add to basket</button>
+						</div>
+						
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<a href="/#/basket" class="form-control btn btn-info">View basket</a>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
